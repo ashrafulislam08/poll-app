@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create New Poll</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -12,37 +17,59 @@
       crossorigin="anonymous"
     />
   </head>
+
   <body>
     <div class="container">
       <div class="row">
         <div class="col-md-6 offset-md-3 my-5">
           <div class="card card-body">
-            <h4>Create a New Poll</h4>
+            <h4>Create A New Poll</h4>
             <form action="/create" method="POST">
+              <div class="form-group">
+                <label for="title">Enter Title</label>
+                <input
+                  type="text"
+                  name="title"
+                  id="title"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group">
+                <label for="description">Enter Description</label>
+                <textarea
+                  name="description"
+                  id="description"
+                  class="form-control"
+                ></textarea>
+              </div>
+              <div id="options">
+                <p>Enter Your Options</p>
                 <div class="form-group">
-                    <label for="title">Enter Title</label>
-                    <input type="text" name="title" id="title" class="form-control">
+                  <input
+                    type="text"
+                    name="options"
+                    class="form-control"
+                    placeholder="Option 1"
+                  />
                 </div>
                 <div class="form-group">
-                    <label for="description">Enter Description</label>
-                    <textarea name="description" id="description" class="form-control"></textarea>
+                  <input
+                    type="text"
+                    name="options"
+                    class="form-control"
+                    placeholder="Option 2"
+                  />
                 </div>
-                </div>
-                <div class="" id="options">
-                    <p>Enter Your Options</p>
-                    <div class="form-group">
-                        <input type="text" name="options" class="form-control" placeholder="Option 1">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="options" class="form-control" placeholder="Option 2">
-                    </div>
-                </div>
-<button class="btn btn-secondary btn-sm" id="addOption">
-    Add More Options
-</button>
-<br> <br>
-<input type="submit" class="btn btn-primary" value="Create Poll">
-
+              </div>
+              <button class="btn btn-secondary btn-sm" id="addOption">
+                Add More Option
+              </button>
+              <br /><br />
+              <input
+                type="submit"
+                class="btn btn-primary"
+                value="Create Poll"
+              />
             </form>
           </div>
         </div>
@@ -66,31 +93,30 @@
     ></script>
 
     <script>
-        let options =document.getElementById('options')
-        let addOption = document.getElementById('addOption')
+      let options = document.getElementById("options");
+      let addOption = document.getElementById("addOption");
 
-        let currentOptionNumber = 3;
-        addOption.addEventListener("click", function(e) {
-            e.preventDefault();
-            let option = createNewOption()
-            options.appendChild(option)
-        })
+      let currentOptionNumber = 3;
 
-        function createNewOption () {
-            let div = document.createElement("div")
-            div.className = "form-group"
+      addOption.addEventListener("click", function (e) {
+        e.preventDefault();
+        let option = createNewOption();
+        options.appendChild(option);
+      });
 
-            let input = document.createElement("input")
-            input.type = 'text'
-            input.name = 'options'
-            input.placeholder = "Option " + currentOptionNumber++
-            input.className = "form-control" 
-            div.appendChild(input);
-            return div;
-        }
+      function createNewOption() {
+        let div = document.createElement("div");
+        div.className = "form-group";
 
+        let input = document.createElement("input");
+        input.type = "text";
+        input.name = "options";
+        input.placeholder = "Option " + currentOptionNumber++;
+        input.className = "form-control";
 
+        div.appendChild(input);
+        return div;
+      }
     </script>
-
   </body>
 </html>
