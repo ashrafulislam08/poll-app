@@ -10,6 +10,10 @@ app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.get("/create", (req, res) => {
+  res.render("create");
+});
+
 app.get("/", (req, res) => {
   res.render("home");
 });
